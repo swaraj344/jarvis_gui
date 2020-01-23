@@ -1,5 +1,4 @@
-from tkinter import messagebox
-from tkinter import *
+from tkinter import Label,Entry,Text,Button,messagebox,filedialog,Tk,Menu,INSERT,DISABLED,FALSE
 from webbrowser import open as op
 import os
 import random
@@ -11,8 +10,8 @@ import speech_recognition as sr
 import datetime
 import socket
 import time
-import fileinput
-from tkinter import filedialog
+
+
 
 
 
@@ -24,7 +23,7 @@ udir=open("./username.txt","r")
 user_name=udir.readline()
 udir.close()
 # voice code for output starts
-engine = pyttsx3.init(None)
+engine = pyttsx3.init("sapi5")
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
 engine.setProperty('rate', 150)
@@ -227,11 +226,11 @@ def started():
         l1.config(image=stop)
         
         try:
+            terminate=0
             t1 = Thread(target=runnow)
             t1.start()
             update("I am Jarvis!! .How May I help You","white")
             flag=0
-            terminate=0
         except RuntimeError:
             update(RuntimeError,"red")
     else:
@@ -239,7 +238,7 @@ def started():
         l1.config(image=play)
         flag = 1
         terminate = 1
-        engine.stop()
+        
 
 def colorchange():
 
@@ -373,18 +372,6 @@ if __name__ == "__main__":
     ccb=Button(root,text="Change Color",font="comic 12 bold italic",bg="#75ff33",border=0.3,command=colorchange)
     ccb.place(x=350,y=500)
     
-
-
-
-
-    # print(t1.is_alive())
-    # def close():
-    #     while main_thread().is_alive():
-    #         if t1.is_alive():
-    #             print("hello")
-    #         else:
-    #             print("i Am else")
-    # Timer(3,close).start()
     root.mainloop()
 
 
