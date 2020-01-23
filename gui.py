@@ -10,6 +10,7 @@ import speech_recognition as sr
 import datetime
 import socket
 import time
+import sys
 
 
 
@@ -24,9 +25,10 @@ user_name=udir.readline()
 udir.close()
 # voice code for output starts
 engine = pyttsx3.init("sapi5")
+
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
-engine.setProperty('rate', 150)
+engine.setProperty('rate', 170)
 engine.setProperty('volume', 1)
 
 
@@ -306,7 +308,8 @@ def getmusicdir():
     f.close()
     dirlabel.config(text=music_dir_path)
 
-
+def Exit():
+    sys.exit(1)
 
 
 
@@ -347,7 +350,7 @@ if __name__ == "__main__":
     submenu.add_command(label="Setting",command=Settingwindow)
     submenu.add_command(label="About us")
     submenu.add_separator()
-    submenu.add_command(label="Exit",command=exit)
+    submenu.add_command(label="Exit",command=Exit)
     helpmenu=Menu(menu,tearoff=False,bg="white")
     menu.add_cascade(label="Help",menu=helpmenu)
     helpmenu.add_command(label="help",command=helpwindow)
