@@ -11,6 +11,7 @@ import datetime
 import socket
 import time
 import sys
+from wallpaper import main
 
 
 
@@ -27,18 +28,18 @@ udir.close()
 engine = pyttsx3.init("sapi5")
 
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0].id)
+engine.setProperty('voice', voices[1].id)
 engine.setProperty('rate', 170)
 engine.setProperty('volume', 1)
 
 
-def speak(audio):
+def speak(audio):  #speak method defined
     engine.say(audio)
     engine.runAndWait()
 
 
 # Code to check internet
-def Isconnect():
+def Isconnect():      #method to check internet 
     print("Checking Internet.....")
     try:
         socket.create_connection(("www.google.com", 80))
@@ -53,7 +54,7 @@ def Isconnect():
 
 defcolor = "blue"
 # Wise me code here
-def wiseme():
+def wiseme():       #method to wiseme at the beginning
     hour = int(datetime.datetime.now().hour)
     if 0 <= hour < 12:
         update("Good Morning !!","green")
@@ -70,11 +71,11 @@ def wiseme():
     speak("Please Tell Me How may I help You !! ")
 
 
-def update(message,color):
+def update(message,color):           #method which update the message box
     msg.config(text=message,fg=color)
 
 
-def commandReceiver():
+def commandReceiver():         #method which recives audio input
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening....")
@@ -111,7 +112,7 @@ message = "OFF"
 terminate = 0
 
 session=1
-def runnow():
+def runnow():        #method which starts execution on started method
     global session
     if session==1:
         wiseme()
@@ -207,6 +208,9 @@ def runnow():
 
         elif 'change colour' in query:
             colorchange()
+        elif 'wallpaper' in query:
+            main()
+
 
         else:
             if count == 3:
@@ -222,7 +226,7 @@ def runnow():
 
 
 
-def started():
+def started():     #method which start on click of microphone icon
     global terminate,flag
     if flag==1:
         l1.config(image=stop)
@@ -242,7 +246,7 @@ def started():
         terminate = 1
         
 
-def colorchange():
+def colorchange():          #method which change color of the backgroud of the window randomly
 
     color1="#dbff33"
     color2="#75ff33"
@@ -261,7 +265,7 @@ def colorchange():
     msg.config(background=msgcolor)
     ccb.config(background=random.choice(colors),fg=msgcolor)
 
-def helpwindow():
+def helpwindow():        #method which open the help window
     helproot =Tk()
     # helproot.geometry("500x400")
     textarea=Text(helproot,height="30",width="80")
@@ -274,7 +278,7 @@ def helpwindow():
 
 
 
-def Settingwindow():
+def Settingwindow():          #method the open setting window
     global music_dir,dirlabel,uname
     Set=Tk()
     Set.bell()
@@ -293,7 +297,7 @@ def Settingwindow():
 
     Set.mainloop()
 
-def saveuserdata():
+def saveuserdata():           #method which execute on click of save button on setting window
     udir=open("./username.txt","w")
     udir.writelines(uname.get())
     udir.close()
@@ -301,19 +305,19 @@ def saveuserdata():
     messagebox.showinfo(f"Welcome {uname.get()} ","Data Saved")
     
 
-def getmusicdir():
+def getmusicdir():      #method which ask for file directory
     music_dir_path=filedialog.askdirectory()
     f=open("./music_dir.txt","w")
     f.write(music_dir_path)
     f.close()
     dirlabel.config(text=music_dir_path)
 
-def Exit():
+def Exit():                #method to exit
     sys.exit(1)
 
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  
     root = Tk()
     root.iconbitmap("./icon.ico")
     netlogo = Image.open("./defaulticon.png")
