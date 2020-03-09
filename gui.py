@@ -27,7 +27,7 @@ udir.close()
 engine = pyttsx3.init("sapi5")
 
 voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+engine.setProperty('voice', voices[0].id)
 engine.setProperty('rate', 170)
 engine.setProperty('volume', 1)
 
@@ -174,10 +174,10 @@ def runnow():
 
         elif 'who are you' in query:
             update("I have already introduced myself in beginning.",defcolor)
-            speak("I have already introduced myself in beginning. Just Kidding!!")
+            speak("I have already introduced myself in beginning. ")
             update("I think you need to do your ear checkup.",defcolor)
             speak("I think you need to do your ear checkup.")
-            update("Just Kidding!!",defcolor)
+            update("Just Kidding!! :)",defcolor)
             speak("Just Kidding!!")
         elif 'chrome' in query:
             update("Starting Google Chrome..",defcolor)
