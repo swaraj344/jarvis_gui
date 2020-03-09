@@ -209,7 +209,14 @@ def runnow():        #method which starts execution on started method
         elif 'change colour' in query:
             colorchange()
         elif 'wallpaper' in query:
+            update("Changing Wallpaper Please Wait!!","red")
+            speak("Changing Wallpaper !!")
             main()
+            speak("Wallpaper Updated!!")
+            update("Wallpaper Updated !!","blue")
+            started()
+            break
+
 
 
         else:
