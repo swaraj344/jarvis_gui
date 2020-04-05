@@ -4,7 +4,6 @@ import os
 import access_key
 import requests
 import wget
-# import gui
 from threading import Thread
 
 def getWallpaper():
@@ -15,8 +14,6 @@ def getWallpaper():
     }
     response = requests.get(url,params=params).json()
     image_source = response['urls']['full']
-    # gui.speak("Downloading")
-    # gui.update("Downloading...... please Wait","green")
     image = wget.download(image_source,'E:/wallpapers/netwallpaper.jpg')
     return image
 

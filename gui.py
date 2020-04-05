@@ -80,9 +80,11 @@ def commandReceiver():         #method which recives audio input
     with sr.Microphone() as source:
         print("Listening....")
         update("Listening....","green")
-
+        
         r.pause_threshold = 0.8
-        audio = r.listen(source)
+        
+        r.energy_threshold = 500
+        audio = r.listen(source,phrase_time_limit=5)
     try:
         update("Recognising....","orange")
         Isinternet = Isconnect()
@@ -115,7 +117,7 @@ session=1
 def runnow():        #method which starts execution on started method
     global session
     if session==1:
-        wiseme()
+        # wiseme()
         session=0
     
     
@@ -237,6 +239,7 @@ def started():     #method which start on click of microphone icon
     global terminate,flag
     if flag==1:
         l1.config(image=stop)
+        
         
         try:
             terminate=0
