@@ -207,9 +207,10 @@ def runnow():        #method which starts execution on started method
             print(strTime)
             update(f"Sir  The Time Is {strTime}","red")
             speak(f"Sir the Time is {strTime}")
-
+            break
         elif 'change colour' in query:
             colorchange()
+            break
         elif 'wallpaper' in query:
             update("Changing Wallpaper Please Wait!!","red")
             speak("Changing Wallpaper !!")
@@ -217,6 +218,18 @@ def runnow():        #method which starts execution on started method
             speak("Wallpaper Updated!!")
             update("Wallpaper Updated !!","blue")
             started()
+            break
+        elif 'what can you do' in query:
+            update("I can Help you In various Ways","blue")
+            speak("I can Help you In various Ways")
+            update("I can Play music","yellow")
+            speak("i can play music just say play music!")
+            update("i can do search in google or wikipedia",'green')
+            speak("i can do search in google or wikipedia just say search or wikipedia")
+            update("open vscode",'orange')
+            speak('time to go for programming just say open vscode')
+            update("open help option","white")
+            speak("for more help option Thankyou have a nice day")
             break
 
 
@@ -258,7 +271,7 @@ def started():     #method which start on click of microphone icon
 
 def colorchange():          #method which change color of the backgroud of the window randomly
 
-    color1="#dbff33"
+    color1="#123456"
     color2="#75ff33"
     color3="#33ffbd"
     color4="#33ff57"
@@ -374,16 +387,16 @@ if __name__ == "__main__":
 
 
     # menu code ends.......
-    root.config(background="#dbff33")
-    l1 = Button(root, image=play, bg="#dbff33", command=started, borderwidth=0)
+    root.config(background="#123456")
+    l1 = Button(root, image=play, bg="#123456", command=started, borderwidth=0)
     l1.place(x=350, y=300)
     msg = Label(root, text=message, height="2",width="50", font="bell 16 italic", bg="#123487", fg="Blue")
     msg.place(x=80, y=120)
-    neticon = Label(root, image=netlogo, bg="#dbff33")
+    neticon = Label(root, image=netlogo, bg="#123456")
     neticon.place(x=620, y=10)
-    nettext = Label(root, text="Checking...", bg="#dbff33", fg="Yellow", font="bell 10 bold")
+    nettext = Label(root, text="Checking...", bg="#123456", fg="Yellow", font="bell 10 bold")
     nettext.place(x=665, y=15)
-    logolab=Label(root,image=logo,bg="#dbff33")
+    logolab=Label(root,image=logo,bg="#123456")
     logolab.place(x=20,y=10)
     Timer(1.0, Isconnect).start()
     ccb=Button(root,text="Change Color",font="comic 12 bold italic",bg="#75ff33",border=0.3,command=colorchange)
